@@ -5,7 +5,7 @@ const randomAddress = faker.address.secondaryAddress();
 
 describe('Fill in the fields with data', () => {
   before(() => {
-    cy.wait(2000)
+
     cy.visit('https://demoqa.com/text-box');
   });
   afterEach(() => {
