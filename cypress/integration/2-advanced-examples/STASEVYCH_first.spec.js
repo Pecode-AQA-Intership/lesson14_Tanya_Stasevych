@@ -9,7 +9,7 @@ describe('Fill in the fields with data', () => {
     cy.visit('https://demoqa.com/text-box');
   });
   afterEach(() => {
-    cy.reload(); // 
+    cy.reload(); 
   });
   it('Fill in data ', () => {
     cy.wait(2000)
