@@ -129,8 +129,8 @@ describe("Testing of Web Tables page", () => {
   });
 
   it("Delete a user", () => {
-    cy.get("#delete-record-1").click();
-    cy.get(".rt-tbody").should("not.include.text", "Cierra");
+    cy.get("#delete-record-4").click();
+    cy.get(".rt-tbody").should("not.include.text", USER_EMAIL);
   });
 
   it("Search User", () => {
