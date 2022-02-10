@@ -1,4 +1,12 @@
 const { faker } = require("@faker-js/faker");
+import {
+  getInnerText,
+  getNumbers,
+  sortNumbersASC,
+  sortStringsASC,
+  sortNumbersDESC,
+  sortStringsDESC,
+} from "./forSorting";
 
 const USER_FIRST_NAME = faker.name.firstName();
 const USER_LAST_NAME = faker.name.lastName();
@@ -15,7 +23,6 @@ const SELECTORS = {
   salary: "#salary",
   department: "#department",
   submit: "#submit",
-
 };
 const EDIT_USER_FIRST_NAME = faker.name.firstName();
 const EDIT_USER_LAST_NAME = faker.name.lastName();
@@ -143,20 +150,132 @@ describe("Testing of Web Tables page", () => {
     cy.get(SELECTORS.salary).type(USER_SALARY);
     cy.get(SELECTORS.department).type(USER_DEPARTMENT);
     cy.get(SELECTORS.submit).click();
-    const UserRow = cy.get('.rt-tr-group:first-child');
+    const UserRow = cy.get(".rt-tr-group:first-child");
 
-    cy.get('#searchBox').type(USER_FIRST_NAME);
+    cy.get("#searchBox").type(USER_FIRST_NAME);
     UserRow.should("exist");
-    cy.get('#searchBox').clear().type(USER_LAST_NAME);
+    cy.get("#searchBox").clear().type(USER_LAST_NAME);
     UserRow.should("exist");
-    cy.get('#searchBox').clear().type(USER_EMAIL);
+    cy.get("#searchBox").clear().type(USER_EMAIL);
     UserRow.should("exist");
-    cy.get('#searchBox').clear().type(USER_AGE);
+    cy.get("#searchBox").clear().type(USER_AGE);
     UserRow.should("exist");
-    cy.get('#searchBox').clear().type(USER_SALARY);
+    cy.get("#searchBox").clear().type(USER_SALARY);
     UserRow.should("exist");
-    cy.get('#searchBox').clear().type(USER_DEPARTMENT);
+    cy.get("#searchBox").clear().type(USER_DEPARTMENT);
     UserRow.should("exist");
   });
 });
 
+describe("Sorting table", () => {
+  it("Sort ASC by First Name", () => {
+    cy.get(".rt-th:nth-child(1)").click();
+    cy.get(".rt-th:nth-child(1)").should("have.class", "-sort-asc");
+
+    cy.get(".rt-tr-group .rt-td:nth-child(1)")
+      .then(getInnerText)
+      .then((firstNames) => {
+        const firstNamesSortASC = sortStringsASC(firstNames);
+        expect(firstNames).to.deep.equal(firstNamesSortASC);
+      });
+  });
+
+  it("Sort DESC by First Name", () => {
+    cy.get(".rt-th:nth-child(1)").dblclick();
+    cy.get(".rt-th:nth-child(1)").should("have.class", "-sort-desc");
+
+    cy.get(".rt-tr-group .rt-td:nth-child(1)")
+      .then(getInnerText)
+      .then((firstNames) => {
+        const firstNamesSort = sortStringsDESC(firstNames);
+        expect(firstNames).to.deep.equal(firstNamesSort);
+      });
+  });
+
+  it("Sort ASC by Last Name", () => {
+    cy.get(".rt-th:nth-child(2)").click();
+    cy.get(".rt-th:nth-child(2)").should("have.class", "-sort-asc");
+
+    cy.get(".rt-tr-group .rt-td:nth-child(2)")
+      .then(getInnerText)
+      .then((lastNames) => {
+        const lastNamesSortASC = sortStringsASC(lastNames);
+        expect(lastNames).to.deep.equal(lastNamesSortASC);
+      });
+  });
+
+  it("Sort DESC by Last Name", () => {
+    cy.get(".rt-th:nth-child(2)").dblclick();
+    cy.get(".rt-th:nth-child(2)").should("have.class", "-sort-desc");
+
+    cy.get(".rt-tr-group .rt-td:nth-child(2)")
+      .then(getInnerText)
+      .then((lastNames) => {
+        const lastNamesSort = sortStringsDESC(lastNames);
+        expect(lastNames).to.deep.equal(lastNamesSort);
+      });
+  });
+
+  it("Sort ASC by Age", () => {
+    cy.get(".rt-th:nth-child(3)").click();
+    cy.get(".rt-th:nth-child(3)").should("have.class", "-sort-asc");
+
+    cy.get(".rt-tr-group .rt-td:nth-child(3)")
+      .then(getInnerText)
+      .then(getNumbers)
+      .then((ages) => {
+        const agesSortASC = sortNumbersASC(ages);
+        expect(ages).to.deep.equat(agesSortASC);
+      });
+  });
+
+  it("Sort DESC by Age", () => {
+    cy.get(".rt-th:nth-child(3)").dblclick();
+    cy.get(".rt-th:nth-child(3)").should("have.class", "-sort-desc");
+
+    cy.get(".rt-tr-group .rt-td:nth-child(3)")
+      .then(getInnerText)
+      .then(getNumbers)
+      .then((ages) => {
+        const agesSort = sortNumbersDESC(ages);
+        expect(ages).to.deep.equat(agesSort);
+      });
+  });
+
+  it("Sort ASC by Email", () => {
+    cy.get(".rt-th:nth-child(4)").click();
+    cy.get(".rt-th:nth-child(4)").should("have.class", "-sort-asc");
+
+    cy.get(".rt-tr-group .rt-td:nth-child(4)")
+      .then(getInnerText)
+      .then((emails) => {
+        const emailsSortASC = sortStringsASC(emails);
+        expect(emails).to.deep.equal(emailsSortASC);
+      });
+  });
+
+  it("Sort DESC by Email", () => {
+    cy.get(".rt-th:nth-child(4)").dblclick();
+    cy.get(".rt-th:nth-child(4)").should("have.class", "-sort-desc");
+
+    cy.get(".rt-tr-group .rt-td:nth-child(4)")
+      .then(getInnerText)
+      .then((emails) => {
+        const emailsSort = sortStringsDESC(emails);
+        expect(emails).to.deep.equal(emailsSort);
+      });
+  });
+
+  it("Sort ASC by Salary", () => {
+    cy.get(".rt-th:nth-child(5)").click();
+    cy.get(".rt-th:nth-child(5)").should("have.class", "-sort-asc");
+
+    cy.get(".rt-tr-group .rt-td:nth-child(5)")
+      .then(getInnerText)
+      .then(getNumbers)
+      .then((salaries) => {
+        const salariesSort = sortNumbersASC(salaries);
+        expect(salaries).to.deep.equal(salariesSort);
+      });
+  });
+});

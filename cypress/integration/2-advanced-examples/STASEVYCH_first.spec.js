@@ -35,4 +35,4 @@ describe('Fill in the fields with data', () => {
     cy.get('#output #permanentAddress').contains(randomAddress);
   });
 
-});
+})
