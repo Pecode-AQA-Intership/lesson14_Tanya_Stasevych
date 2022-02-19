@@ -9,7 +9,7 @@ describe('Fill in the fields with data', () => {
     cy.visit('https://demoqa.com/text-box');
   });
   afterEach(() => {
-    cy.reload(); // 
+    cy.reload(); 
   });
   it('Fill in data ', () => {
     cy.wait(2000)
@@ -33,6 +33,8 @@ describe('Fill in the fields with data', () => {
     cy.get('#output #email').contains(randomEmail);
     cy.get('#output #currentAddress').contains(randomAddress);
     cy.get('#output #permanentAddress').contains(randomAddress);
+    cy.get('.css-2b097c-container')
+    .select('Haryana')
   });
 
-});
+})
