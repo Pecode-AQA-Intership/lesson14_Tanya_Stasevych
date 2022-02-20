@@ -19,8 +19,8 @@ describe("Lesson15", () => {
       userTable.firstNamePopupField.type(randomUserData.FAKE_FIRST_NAME);
       userTable.lastNamePopupField.type(randomUserData.FAKE_LAST_NAME);
       userTable.userEmailPopupField.type(randomUserData.FAKE_EMAIL);
-      userTable.userAgePopupField.type(999);
-      userTable.userSalaryPopupField.type(999999);
+      userTable.userAgePopupField.type(67);
+      userTable.userSalaryPopupField.type(7678);
       userTable.userDepartmentPopupField.type(randomUserData.DEPARTMENT);
 
       userTable.modalHeaderCloseButton.click();
