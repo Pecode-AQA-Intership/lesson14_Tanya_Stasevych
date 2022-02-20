@@ -63,13 +63,8 @@ describe('Lesson16', () => {
 
     it('Should select value from Subjects dropdown', () => {
       registrationFormPage.subjectsDropdown.click();
-      registrationFormPage.subjectsDropdown.type(SUBJECT.history);
-      registrationFormPage.dropdownSubjectMenu
-        .contains(SUBJECT.history)
-        .click();
-      registrationFormPage.subjectLabels
-        .contains(SUBJECT.history)
-        .should('exist');
+      registrationFormPage.subjectsDropdown.should("be.visible").type("history{enter}")
+      
     });
 
     it('Should check Hobbies checkbox', () => {

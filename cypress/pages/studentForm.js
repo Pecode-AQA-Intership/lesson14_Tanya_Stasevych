@@ -56,7 +56,7 @@ class RegistrationFormPage {
   }
 
   get subjectsDropdown() {
-    return cy.get('div#subjectsContainer');
+    return cy.get("#subjectsContainer");
   }
 
   get subjectLabels() {
