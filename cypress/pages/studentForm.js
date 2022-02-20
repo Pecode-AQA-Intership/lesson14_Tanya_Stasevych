@@ -56,11 +56,11 @@ class RegistrationFormPage {
   }
 
   get subjectsDropdown() {
-    return cy.get("div#subjectsContainer");
+    return cy.get('div#subjectsContainer');
   }
 
   get subjectLabels() {
-    return cy.get("div.subjects-auto-complete__multi-value__label");
+    return cy.get('div.subjects-auto-complete__multi-value__label');
   }
 
   get sportsHobbyCheckbox() {

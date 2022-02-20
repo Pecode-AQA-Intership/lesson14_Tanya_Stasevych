@@ -49,7 +49,7 @@ const FAKE_LAST_NAME = faker.name.lastName();
 const FAKE_EMAIL = faker.internet.email();
 const AGE = faker.random.number({ min: 0, max: 100, precision: 1 });
 const FAKE_MOBILE = faker.phone.phoneNumber("##########");
-const SALARY_DOLLARS = faker.random.number({
+const SALARY = faker.random.number({
   min: 400,
   max: 100000,
   precision: 1,
