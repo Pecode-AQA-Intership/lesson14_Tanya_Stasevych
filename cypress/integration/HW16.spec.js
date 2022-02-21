@@ -110,14 +110,13 @@ describe('Lesson16', () => {
         randomUserData.FAKE_MOBILE,
       );
       
-      submitStudentDataForm.studentSubjectValue.contains(SUBJECT.history);
       submitStudentDataForm.studentHobbiesValue.contains(HOBBIES.music);
       submitStudentDataForm.studentPictureValue.contains('photoCat.png');
       submitStudentDataForm.studentAddressValue.contains(
         randomUserData.FAKE_CURRENT_ADDRESS,
       );
       submitStudentDataForm.studentStateAndCityValue.contains(
-        `${STATES.uttarPradesh} ${UTTAR_PRADESH_STATE_CITIES.agra}`,
+        `${STATES.haryana} ${HARYANA_STATE_CITIES.karnal}`,
       );
     });
   });
